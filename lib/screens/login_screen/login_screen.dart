@@ -92,11 +92,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Observer(
                       builder: (_) {
                         return LoginButton(
-                          onPressed: loginStore.loginPressed!(),
-                          name: //loginStore.loading
-                              // ? Text('Teste')
-                              //:
-                              Text('Login'),
+                          onPressed: () {}, //loginStore.loginPressed!(),
+                          name: loginStore.loading
+                              ? CircularProgressIndicator(
+                                  valueColor:
+                                      AlwaysStoppedAnimation(Colors.white),
+                                )
+                              : Text('Login'),
                         );
                       },
                     ),

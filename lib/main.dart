@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todomobx/screens/login_screen/login_screen.dart';
+import 'package:todomobx/screens/list_screen/list_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.deepPurpleAccent,
         scaffoldBackgroundColor: Colors.deepPurpleAccent,
       ),
-      home: LoginScreen(),
+      home: ListScreen(),
     );
   }
 }
