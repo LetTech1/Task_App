@@ -23,12 +23,12 @@ mixin _$LoginStore on _LoginStore, Store {
       (_$isPasswordValidComputed ??= Computed<bool>(() => super.isPasswordValid,
               name: '_LoginStore.isPasswordValid'))
           .value;
-  Computed<Function?>? _$loginPressedComputed;
+  Computed<bool>? _$isButtonEnableComputed;
 
   @override
-  Function? get loginPressed =>
-      (_$loginPressedComputed ??= Computed<Function?>(() => super.loginPressed,
-              name: '_LoginStore.loginPressed'))
+  bool get isButtonEnable =>
+      (_$isButtonEnableComputed ??= Computed<bool>(() => super.isButtonEnable,
+              name: '_LoginStore.isButtonEnable'))
           .value;
 
   final _$emailAtom = Atom(name: '_LoginStore.email');
@@ -149,6 +149,17 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
   @override
+  void logout() {
+    final _$actionInfo =
+        _$_LoginStoreActionController.startAction(name: '_LoginStore.logout');
+    try {
+      return super.logout();
+    } finally {
+      _$_LoginStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 email: ${email},
@@ -158,7 +169,7 @@ loading: ${loading},
 loggedIn: ${loggedIn},
 isEmailValid: ${isEmailValid},
 isPasswordValid: ${isPasswordValid},
-loginPressed: ${loginPressed}
+isButtonEnable: ${isButtonEnable}
     ''';
   }
 }

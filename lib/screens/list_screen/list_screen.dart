@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:todomobx/screens/list_screen/widgets/exit_button_widget.dart';
 import 'package:todomobx/screens/list_screen/widgets/title_widget.dart';
 import 'package:todomobx/screens/login_screen/login_screen.dart';
 import 'package:todomobx/stores/list_store.dart';
+import 'package:todomobx/stores/login_store.dart';
 import 'package:todomobx/widgets/custom_text_field.dart';
 import 'package:todomobx/widgets/custom_icon_button.dart';
 
@@ -42,6 +44,8 @@ class _ListScreenState extends State<ListScreen> {
                       iconButton: Icon(Icons.exit_to_app),
                       color: Colors.white,
                       onPressed: () {
+                        Provider.of<LoginStore>(context, listen: false)
+                            .logout();
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (context) => LoginScreen(),

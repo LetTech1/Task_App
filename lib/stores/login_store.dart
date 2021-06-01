@@ -37,8 +37,7 @@ abstract class _LoginStore with Store {
   bool get isPasswordValid => password.length >= 6;
 
   @computed
-  Function? get loginPressed =>
-      (isEmailValid && isPasswordValid && !loading) ? login : null;
+  bool get isButtonEnable => (isEmailValid && isPasswordValid && !loading);
 
   @action
   Future<void> login() async {
@@ -50,5 +49,13 @@ abstract class _LoginStore with Store {
 
     loading = false;
     loggedIn = true;
+
+    email = "";
+    password = "";
+  }
+
+  @action
+  void logout() {
+    loggedIn = false;
   }
 }
